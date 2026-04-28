@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const location = useLocation();
 
   // Services dropdown items
@@ -49,8 +49,14 @@ const Navbar = () => {
     },
   ];
 
+  interface NavItem {
+    type: "link" | "dropdown";
+    name: string;
+    path?: string;
+  }
+
   // Main nav order (edit this array anytime to reorder tabs)
-  const navItems = [
+  const navItems: NavItem[] = [
     { type: "link", name: "Home", path: "/" },
     { type: "link", name: "About", path: "/about" },
     { type: "link", name: "Entrepreneurs", path: "/entrepreneurs" },
@@ -121,7 +127,7 @@ const Navbar = () => {
                 return (
                   <NavLink
                     key={item.name}
-                    to={item.path}
+                    to={item.path || "#"}
                     className={({ isActive }) =>
                       `text-sm font-medium relative group transition-colors duration-200 flex items-center h-full ${
                         isActive
@@ -298,7 +304,7 @@ const Navbar = () => {
             {navLinks.map((item) => (
               <NavLink
                 key={item.name}
-                to={item.path}
+                to={item.path || "#"}
                 className={({ isActive }) =>
                   `block px-4 py-3 text-base font-medium rounded-xl transition-all ${
                     isActive
