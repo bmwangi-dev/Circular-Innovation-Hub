@@ -109,7 +109,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #2D6A4F 0%, #F4A261 100%);
+  background: linear-gradient(135deg, #3d7118 0%, #e1ac00 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -131,12 +131,12 @@ body {
   animation: shine 3s infinite;
 }
 
-.bg-gradient-green-orange {
-  background: linear-gradient(135deg, #2D6A4F 0%, #40916C 50%, #F4A261 100%);
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #3d7118 0%, #3d7118 50%, #e1ac00 100%);
 }
 
-.bg-gradient-orange-green {
-  background: linear-gradient(135deg, #F4A261 0%, #E76F51 50%, #2D6A4F 100%);
+.bg-gradient-brand-reverse {
+  background: linear-gradient(135deg, #e1ac00 0%, #e1ac00 50%, #3d7118 100%);
 }
 
 /* Line clamp utility for text truncation */

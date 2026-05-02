@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     ArrowRight,
     Sparkles,
     Users,
     ChevronRight,
-    Target,
     Rocket,
     Handshake,
     Award,
@@ -13,6 +12,7 @@ import {
     Calendar,
     ExternalLink,
     Search,
+    Target,
     X as XIcon
 } from 'lucide-react';
 
@@ -79,28 +79,34 @@ const ProjectsPage = () => {
         ? projectsData
         : projectsData.filter(project => project.category === selectedCategory);
 
+    useEffect(() => {
+        document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isModalOpen]);
+
     const openModal = (project: typeof projectsData[0]) => {
         setSelectedProject(project);
         setIsModalOpen(true);
-        document.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
         setSelectedProject(null);
-        document.body.style.overflow = "auto";
     };
 
     return (
         <div className="min-h-screen bg-white overflow-x-hidden">
             {/* HERO SECTION - Projects */}
-            <section className="relative min-h-[60vh] bg-gradient-to-br from-white via-emerald-50/30 to-orange-50/30 overflow-hidden pt-28 lg:pt-32">
+            <section className="relative min-h-[60vh] bg-gradient-to-br from-white via-green-50/30 to-yellow-50/30 overflow-hidden pt-28 lg:pt-32">
                 <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#52B788] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow"></div>
-                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#F4A261] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow delay-1000"></div>
-                    <Sparkles className="absolute top-20 right-[15%] text-[#2D6A4F] opacity-20 w-32 h-32 animate-float" />
-                    <Rocket className="absolute bottom-20 left-[10%] text-[#F4A261] opacity-25 w-28 h-28 animate-float-delayed" />
-                    <div className="absolute top-1/3 left-[5%] w-64 h-64 bg-[#74C69D] rounded-full filter blur-3xl opacity-10"></div>
+                    <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#3d7118] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow"></div>
+                    <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#e1ac00] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-glow delay-1000"></div>
+                    <Sparkles className="absolute top-20 right-[15%] text-[#3d7118] opacity-20 w-32 h-32 animate-float" />
+                    <Rocket className="absolute bottom-20 left-[10%] text-[#e1ac00] opacity-25 w-28 h-28 animate-float-delayed" />
+                    <div className="absolute top-1/3 left-[5%] w-64 h-64 bg-[#3d7118] rounded-full filter blur-3xl opacity-10"></div>
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
@@ -116,18 +122,18 @@ const ProjectsPage = () => {
 
                 <div className="absolute bottom-0 left-0 w-full">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" className="w-full h-auto">
-                        <path fill="rgba(45,106,79,0.06)" fillOpacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+                        <path fill="rgba(61,113,24,0.06)" fillOpacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
                     </svg>
                 </div>
             </section>
 
             {/* IMPACT STATS SECTION */}
-            <section className="relative py-16 bg-gradient-to-br from-gray-50 to-emerald-50/30">
+            <section className="relative py-16 bg-gradient-to-br from-gray-50 to-green-50/30">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid md:grid-cols-4 gap-8">
                         {impactStats.map((stat, idx) => (
                             <div key={idx} className="text-center group">
-                                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[#2D6A4F] to-[#F4A261] rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[#3d7118] to-[#e1ac00] rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                                     <stat.icon className="h-8 w-8 text-white" />
                                 </div>
                                 <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">{stat.number}</div>
@@ -149,8 +155,8 @@ const ProjectsPage = () => {
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
                                 className={`relative z-30 inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium cursor-pointer select-none transition-all duration-300 ${selectedCategory === category
-                                    ? "bg-gradient-to-r from-[#2D6A4F] to-[#F4A261] text-white shadow-lg"
-                                    : "bg-gray-100 text-gray-600 hover:bg-emerald-100 hover:text-[#2D6A4F]"
+                                    ? "bg-gradient-to-r from-[#3d7118] to-[#e1ac00] text-white shadow-lg"
+                                    : "bg-gray-100 text-gray-600 hover:bg-green-100 hover:text-[#3d7118]"
                                     }`}
                             >
                                 {category}
@@ -177,13 +183,13 @@ const ProjectsPage = () => {
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
                                     <div className="absolute top-4 left-4">
-                                        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#2D6A4F]">
+                                        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#3d7118]">
                                             {project.category}
                                         </span>
                                     </div>
                                 </div>
                                 <div className="p-6">
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#2D6A4F] transition-colors">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#3d7118] transition-colors">
                                         {project.name}
                                     </h3>
                                     <p className="text-gray-500 text-sm mb-4 line-clamp-3">
@@ -196,7 +202,7 @@ const ProjectsPage = () => {
                                         </div>
                                         <button
                                             onClick={() => openModal(project)}
-                                            className="flex items-center gap-2 text-[#2D6A4F] font-medium text-sm group-hover:gap-3 transition-all"
+                                            className="flex items-center gap-2 text-[#3d7118] font-medium text-sm group-hover:gap-3 transition-all"
                                         >
                                             Learn More
                                             <ChevronRight className="h-4 w-4" />
@@ -221,16 +227,16 @@ const ProjectsPage = () => {
 
             {/* CTA SECTION */}
             <section className="relative py-24 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1B4332] via-[#2D6A4F] to-[#F4A261]"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#3d7118] via-[#3d7118] to-[#e1ac00]"></div>
                 <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                    <Handshake className="h-16 w-16 text-[#FFB703] mx-auto mb-6 animate-bounce-slow" />
+                    <Handshake className="h-16 w-16 text-[#e1ac00] mx-auto mb-6 animate-bounce-slow" />
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Partner With Us
                     </h2>
-                    <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
+                    <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
                         Interested in collaborating on future projects? Let's create impact together.
                     </p>
-                    <button className="bg-white text-[#2D6A4F] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 mx-auto btn-shine">
+                    <button className="bg-white text-[#3d7118] px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 mx-auto btn-shine">
                         Get in touch
                         <ArrowRight className="h-5 w-5" />
                     </button>
@@ -261,7 +267,7 @@ const ProjectsPage = () => {
                                 <XIcon className="h-5 w-5" />
                             </button>
                             <div className="absolute bottom-4 left-4">
-                                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#2D6A4F]">
+                                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#3d7118]">
                                     {selectedProject.category}
                                 </span>
                             </div>
@@ -277,33 +283,33 @@ const ProjectsPage = () => {
                                 {selectedProject.summary}
                             </p>
 
-                            <div className="bg-gradient-to-r from-emerald-50 to-orange-50 rounded-2xl p-6 mb-6">
+                            <div className="bg-gradient-to-r from-green-50 to-yellow-50 rounded-2xl p-6 mb-6">
                                 <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                                    <Target className="h-5 w-5 text-[#2D6A4F]" />
+                                    <Target className="h-5 w-5 text-[#3d7118]" />
                                     Key Highlights
                                 </h3>
                                 <ul className="space-y-2">
                                     <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#2D6A4F]" />
+                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
                                         <span>Partnership with leading organizations</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#2D6A4F]" />
+                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
                                         <span>Hands-on training and mentorship</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#2D6A4F]" />
+                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
                                         <span>Practical skills development</span>
                                     </li>
                                 </ul>
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <button className="flex-1 bg-gradient-to-r from-[#2D6A4F] to-[#F4A261] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                                <button className="flex-1 bg-gradient-to-r from-[#3d7118] to-[#e1ac00] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
                                     <ExternalLink className="h-4 w-4" />
                                     Learn More
                                 </button>
-                                <button className="flex-1 border-2 border-[#2D6A4F] text-[#2D6A4F] px-6 py-3 rounded-xl font-semibold hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center gap-2">
+                                <button className="flex-1 border-2 border-[#3d7118] text-[#3d7118] px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 flex items-center justify-center gap-2">
                                     <Handshake className="h-4 w-4" />
                                     Partner With Us
                                 </button>
