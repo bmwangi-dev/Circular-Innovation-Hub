@@ -1,6 +1,5 @@
 import {
     Award,
-    Briefcase,
     CheckCircle,
     Compass,
     FileText,
