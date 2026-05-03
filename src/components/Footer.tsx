@@ -5,6 +5,7 @@ import {
     Phone,
 } from 'lucide-react';
 import logoImg from '../assets/images/CIH_logo.png';
+import { OptimizedImage } from '../lib/cloudinary';
 
 const Footer = () => {
     return (
@@ -14,7 +15,16 @@ const Footer = () => {
                     {/* Brand Column */}
                     <div className="space-y-8">
                         <div>
-                            <img src={logoImg} alt="CIH Logo" className="h-32 w-32 object-contain" />
+                            <OptimizedImage
+                                publicId="CIH_logo"
+                                fallbackSrc={logoImg}
+                                alt="CIH Logo"
+                                className="h-32 w-32 object-contain"
+                                width={256}
+                                height={256}
+                                resizeMode="contain"
+                                loading="lazy"
+                            />
                             <p className="mt-6 text-sm leading-relaxed text-green-100/60 max-w-sm">
                                 Inspiring and enabling the transition to a sustainable world through circular economy excellence.
                             </p>

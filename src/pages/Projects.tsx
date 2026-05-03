@@ -15,6 +15,7 @@ import {
     Target,
     X as XIcon
 } from 'lucide-react';
+import { OptimizedImage } from '../lib/cloudinary';
 
 // Project data based on the provided CMS data
 const projectsData = [
@@ -177,10 +178,15 @@ const ProjectsPage = () => {
                                 style={{ animationDelay: `${idx * 0.1}s` }}
                             >
                                 <div className="relative h-56 overflow-hidden">
-                                    <img
-                                        src={project.image}
+                                    <OptimizedImage
+                                        publicId={project.image}
+                                        fallbackSrc={project.image}
                                         alt={project.name}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        loading="lazy"
+                                        width={720}
+                                        height={448}
+                                        deliveryType="fetch"
                                     />
                                     <div className="absolute top-4 left-4">
                                         <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#3d7118]">
@@ -255,10 +261,14 @@ const ProjectsPage = () => {
                     >
                         {/* Modal Header Image */}
                         <div className="relative h-64 md:h-80 overflow-hidden">
-                            <img
-                                src={selectedProject.image}
+                            <OptimizedImage
+                                publicId={selectedProject.image}
+                                fallbackSrc={selectedProject.image}
                                 alt={selectedProject.name}
                                 className="w-full h-full object-cover"
+                                width={960}
+                                height={640}
+                                deliveryType="fetch"
                             />
                             <button
                                 onClick={closeModal}

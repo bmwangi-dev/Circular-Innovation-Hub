@@ -16,15 +16,16 @@ import {
     Sun,
     Droplets,
 } from 'lucide-react';
+import { OptimizedImage } from '../lib/cloudinary';
 
 const HomePage = () => {
     const partners = [
-        { name: "African Slums", logo: "/africanslums_logo.jpg" },
-        { name: "Wee Centre", logo: "/weecentre_logo.jpg" },
-        { name: "Stichting Deon", logo: "/stitchingdeon_logo.jpg" },
-        { name: "Naitech", logo: "/naitech_logo.jpg" },
-        { name: "AJRY", logo: "/ajry_logo.jpg" },
-        { name: "Chat PR", logo: "/chatpr_logo.jpg" },
+        { name: "African Slums", publicId: "africanslums_logo", logo: "/africanslums_logo.jpg" },
+        { name: "Wee Centre", publicId: "weecentre_logo", logo: "/weecentre_logo.jpg" },
+        { name: "Stichting Deon", publicId: "stitchingdeon_logo", logo: "/stitchingdeon_logo.jpg" },
+        { name: "Naitech", publicId: "naitech_logo", logo: "/naitech_logo.jpg" },
+        { name: "AJRY", publicId: "ajry_logo", logo: "/ajry_logo.jpg" },
+        { name: "Chat PR", publicId: "chatpr_logo", logo: "/chatpr_logo.jpg" },
     ];
 
     return (
@@ -264,11 +265,15 @@ const HomePage = () => {
                             {partners.map((partner) => (
                                 <div key={partner.name} className="group rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3d7118] hover:shadow-lg hover:shadow-green-100">
                                     <div className="aspect-square rounded-xl bg-white p-2 ring-1 ring-gray-100 overflow-hidden flex items-center justify-center">
-                                        <img
-                                            src={partner.logo}
+                                        <OptimizedImage
+                                            publicId={partner.publicId}
+                                            fallbackSrc={partner.logo}
                                             alt={`${partner.name} logo`}
                                             className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                                             loading="lazy"
+                                            width={280}
+                                            height={280}
+                                            resizeMode="contain"
                                         />
                                     </div>
                                     <p className="mt-3 text-center text-xs sm:text-sm font-semibold text-gray-700 group-hover:text-[#3d7118] transition-colors">

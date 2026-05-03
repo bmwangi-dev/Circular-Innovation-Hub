@@ -14,6 +14,7 @@ import {
 
 import logoImg from "../assets/images/CIH_logo.png";
 import NavbarDropdown from "../components/Ui/NavbarDropdown";
+import { OptimizedImage } from "../lib/cloudinary";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,10 +93,14 @@ const Navbar = () => {
             to="/"
             className="flex items-center space-x-2 group cursor-pointer"
           >
-            <img
-              src={logoImg}
+            <OptimizedImage
+              publicId="CIH_logo"
+              fallbackSrc={logoImg}
               alt="CIH Logo"
               className="h-32 w-32 object-contain"
+              width={256}
+              height={256}
+              resizeMode="contain"
             />
           </Link>
 
@@ -184,10 +189,14 @@ const Navbar = () => {
         <div className="flex flex-col">
           {/* Drawer Header */}
           <div className="flex justify-between items-center p-4 border-b border-green-700/50 bg-[#3d7118]/50">
-            <img
-              src={logoImg}
+            <OptimizedImage
+              publicId="CIH_logo"
+              fallbackSrc={logoImg}
               alt="CIH Logo"
               className="h-28 w-28 object-contain"
+              width={224}
+              height={224}
+              resizeMode="contain"
             />
 
             <button
