@@ -9,6 +9,7 @@ import {
     CheckCircle,
     Eye,
 } from 'lucide-react';
+import { cloudinaryAssets } from '../lib/cloudinaryAssets';
 import { OptimizedImage } from '../lib/cloudinary';
 
 const AboutPage = () => {
@@ -168,7 +169,7 @@ const AboutPage = () => {
                             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#3d7118]/20 to-[#e1ac00]/20 blur-3xl"></div>
                             <div className="relative bg-white rounded-2xl border border-green-100 p-4 shadow-xl hover-lift">
                                 <OptimizedImage
-                                    publicId="conecptofcircularity"
+                                    publicId={cloudinaryAssets.circularityConcept}
                                     fallbackSrc="/conecptofcircularity.png"
                                     alt="Circular economy concept diagram"
                                     className="w-full h-auto rounded-xl object-contain"

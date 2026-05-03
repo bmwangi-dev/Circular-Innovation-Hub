@@ -16,16 +16,17 @@ import {
     Sun,
     Droplets,
 } from 'lucide-react';
+import { cloudinaryAssets } from '../lib/cloudinaryAssets';
 import { OptimizedImage } from '../lib/cloudinary';
 
 const HomePage = () => {
     const partners = [
-        { name: "African Slums", publicId: "africanslums_logo", logo: "/africanslums_logo.jpg" },
-        { name: "Wee Centre", publicId: "weecentre_logo", logo: "/weecentre_logo.jpg" },
-        { name: "Stichting Deon", publicId: "stitchingdeon_logo", logo: "/stitchingdeon_logo.jpg" },
-        { name: "Naitech", publicId: "naitech_logo", logo: "/naitech_logo.jpg" },
-        { name: "AJRY", publicId: "ajry_logo", logo: "/ajry_logo.jpg" },
-        { name: "Chat PR", publicId: "chatpr_logo", logo: "/chatpr_logo.jpg" },
+        { name: "African Slums", publicId: cloudinaryAssets.partners.africanSlums, fallbackSrc: "/africanslums_logo.jpg" },
+        { name: "Wee Centre", publicId: cloudinaryAssets.partners.weeCentre, fallbackSrc: "/weecentre_logo.jpg" },
+        { name: "Stichting Deon", publicId: cloudinaryAssets.partners.stichtingDeon, fallbackSrc: "/stitchingdeon_logo.jpg" },
+        { name: "Naitech", publicId: cloudinaryAssets.partners.naitech, fallbackSrc: "/naitech_logo.jpg" },
+        { name: "AJRY", publicId: cloudinaryAssets.partners.ajry, fallbackSrc: "/ajry_logo.jpg" },
+        { name: "Chat PR", publicId: cloudinaryAssets.partners.chatPr, fallbackSrc: "/chatpr_logo.jpg" },
     ];
 
     return (
@@ -267,7 +268,7 @@ const HomePage = () => {
                                     <div className="aspect-square rounded-xl bg-white p-2 ring-1 ring-gray-100 overflow-hidden flex items-center justify-center">
                                         <OptimizedImage
                                             publicId={partner.publicId}
-                                            fallbackSrc={partner.logo}
+                                            fallbackSrc={partner.fallbackSrc}
                                             alt={`${partner.name} logo`}
                                             className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
                                             loading="lazy"

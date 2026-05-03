@@ -14,7 +14,7 @@ type DeliveryType = "upload" | "fetch";
 type ResizeMode = "cover" | "contain";
 
 type OptimizedImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "src"> & {
-  publicId: string;
+  publicId?: string;
   fallbackSrc?: string;
   width?: number;
   height?: number;
@@ -61,12 +61,19 @@ export const OptimizedImage = ({
   const [useFallback, setUseFallback] = useState(false);
 
   const optimizedImage = useMemo(
-    () => getOptimizedImage(publicId, width, height, resizeMode, deliveryType),
+    () =>
+      publicId
+        ? getOptimizedImage(publicId, width, height, resizeMode, deliveryType)
+        : null,
     [deliveryType, height, publicId, resizeMode, width]
   );
 
-  if (useFallback && fallbackSrc) {
+  if ((!optimizedImage || useFallback) && fallbackSrc) {
     return <img src={fallbackSrc} width={width} height={height} {...imageProps} />;
+  }
+
+  if (!optimizedImage) {
+    return null;
   }
 
   return (

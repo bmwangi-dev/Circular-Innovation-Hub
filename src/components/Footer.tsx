@@ -5,6 +5,7 @@ import {
     Phone,
 } from 'lucide-react';
 import logoImg from '../assets/images/CIH_logo.png';
+import { cloudinaryAssets } from '../lib/cloudinaryAssets';
 import { OptimizedImage } from '../lib/cloudinary';
 
 const Footer = () => {
@@ -16,7 +17,7 @@ const Footer = () => {
                     <div className="space-y-8">
                         <div>
                             <OptimizedImage
-                                publicId="CIH_logo"
+                                publicId={cloudinaryAssets.logo}
                                 fallbackSrc={logoImg}
                                 alt="CIH Logo"
                                 className="h-32 w-32 object-contain"
