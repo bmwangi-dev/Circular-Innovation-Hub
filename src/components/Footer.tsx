@@ -26,18 +26,18 @@ const Footer = () => {
                                 resizeMode="contain"
                                 loading="lazy"
                             />
-                            <p className="mt-6 text-sm leading-relaxed text-green-100/60 max-w-sm">
+                            <p className="mt-6 text-sm leading-relaxed text-white-100/60 max-w-sm">
                                 Inspiring and enabling the transition to a sustainable world through circular economy excellence.
                             </p>
                         </div>
                         <p className="text-xs text-green-100/40">
                             Circular Innovation Hub<br />
-                            © 2024 All rights reserved.
+                            © 2026 All rights reserved.
                         </p>
                     </div>
 
                     {/* Links & Contact Column */}
-                    <div className="grid sm:grid-cols-2 gap-12">
+                    <div className="grid sm:grid-cols-2 gap-12">    
                         <div>
                             <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-xs">Quick Links</h4>
                             <ul className="space-y-3 text-sm">

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     ArrowRight,
     Sparkles,
@@ -8,19 +9,16 @@ import {
     Handshake,
     Award,
     TrendingUp,
-    CheckCircle,
     Calendar,
-    ExternalLink,
-    Search,
-    Target,
-    X as XIcon
+    Search
 } from 'lucide-react';
 import { OptimizedImage } from '../lib/cloudinary';
 
-// Project data based on the provided CMS data
+// Project data – added a unique slug for each project
 const projectsData = [
     {
         id: "1",
+        slug: "mentorship-coaching-program",
         name: "Mentorship And Coaching Program",
         summary:
             "A transformative mentorship and coaching initiative launched in Q1 2025 to empower entrepreneurs with practical guidance, business skills, and growth opportunities.",
@@ -31,6 +29,7 @@ const projectsData = [
     },
     {
         id: "2",
+        slug: "circular-table",
         name: "Circular Table",
         summary:
             "The Circular Table connects entrepreneurs and innovators in waste management, circular economy and sustainability.",
@@ -41,6 +40,7 @@ const projectsData = [
     },
     {
         id: "3",
+        slug: "grant-writing-workshop",
         name: "Grant Application, Proposal Writing & Tendering Workshop",
         summary:
             "A full-day workshop helping entrepreneurs gain practical proposal and tendering skills.",
@@ -51,6 +51,7 @@ const projectsData = [
     },
     {
         id: "4",
+        slug: "barcode-training-program",
         name: "Barcode Training Program",
         summary:
             "In partnership with GS1 Kenya, equipping entrepreneurs with barcode and traceability skills.",
@@ -71,32 +72,12 @@ const impactStats = [
 
 const ProjectsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
-    const [selectedProject, setSelectedProject] = useState<typeof projectsData[0] | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const categories = ["All", "Training", "Event", "Workshop"];
 
     const filteredProjects = selectedCategory === "All"
         ? projectsData
         : projectsData.filter(project => project.category === selectedCategory);
-
-    useEffect(() => {
-        document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [isModalOpen]);
-
-    const openModal = (project: typeof projectsData[0]) => {
-        setSelectedProject(project);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setSelectedProject(null);
-    };
 
     return (
         <div className="min-h-screen bg-white overflow-x-hidden">
@@ -172,9 +153,10 @@ const ProjectsPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredProjects.map((project, idx) => (
-                            <div
+                            <Link
                                 key={project.id}
-                                className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover-lift transition-all cursor-pointer animate-scale-in"
+                                to={`/projects/${project.slug}`}
+                                className="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover-lift transition-all animate-scale-in block"
                                 style={{ animationDelay: `${idx * 0.1}s` }}
                             >
                                 <div className="relative h-56 overflow-hidden">
@@ -206,16 +188,13 @@ const ProjectsPage = () => {
                                             <Calendar className="h-4 w-4" />
                                             <span>{project.date}</span>
                                         </div>
-                                        <button
-                                            onClick={() => openModal(project)}
-                                            className="flex items-center gap-2 text-[#3d7118] font-medium text-sm group-hover:gap-3 transition-all"
-                                        >
+                                        <div className="flex items-center gap-2 text-[#3d7118] font-medium text-sm group-hover:gap-3 transition-all">
                                             Learn More
                                             <ChevronRight className="h-4 w-4" />
-                                        </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
@@ -248,86 +227,6 @@ const ProjectsPage = () => {
                     </button>
                 </div>
             </section>
-
-            {/* MODAL FOR PROJECT DETAILS */}
-            {isModalOpen && selectedProject && (
-                <div
-                    className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300"
-                    onClick={closeModal}
-                >
-                    <div
-                        className="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl animate-scale-in"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {/* Modal Header Image */}
-                        <div className="relative h-64 md:h-80 overflow-hidden">
-                            <OptimizedImage
-                                publicId={selectedProject.image}
-                                fallbackSrc={selectedProject.image}
-                                alt={selectedProject.name}
-                                className="w-full h-full object-cover"
-                                width={960}
-                                height={640}
-                                deliveryType="fetch"
-                            />
-                            <button
-                                onClick={closeModal}
-                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all"
-                            >
-                                <XIcon className="h-5 w-5" />
-                            </button>
-                            <div className="absolute bottom-4 left-4">
-                                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#3d7118]">
-                                    {selectedProject.category}
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Modal Content */}
-                        <div className="p-6 md:p-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                                {selectedProject.name}
-                            </h2>
-
-                            <p className="text-gray-600 leading-relaxed mb-6">
-                                {selectedProject.summary}
-                            </p>
-
-                            <div className="bg-gradient-to-r from-green-50 to-yellow-50 rounded-2xl p-6 mb-6">
-                                <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                                    <Target className="h-5 w-5 text-[#3d7118]" />
-                                    Key Highlights
-                                </h3>
-                                <ul className="space-y-2">
-                                    <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
-                                        <span>Partnership with leading organizations</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
-                                        <span>Hands-on training and mentorship</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-gray-600">
-                                        <CheckCircle className="h-4 w-4 text-[#3d7118]" />
-                                        <span>Practical skills development</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <button className="flex-1 bg-gradient-to-r from-[#3d7118] to-[#e1ac00] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
-                                    <ExternalLink className="h-4 w-4" />
-                                    Learn More
-                                </button>
-                                <button className="flex-1 border-2 border-[#3d7118] text-[#3d7118] px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 flex items-center justify-center gap-2">
-                                    <Handshake className="h-4 w-4" />
-                                    Partner With Us
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

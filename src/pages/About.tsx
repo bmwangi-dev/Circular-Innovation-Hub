@@ -101,7 +101,7 @@ const AboutPage = () => {
                     <div className="grid lg:grid-cols-2 gap-12">
                         {/* Mission */}
                         <div className="relative group animate-slide-in-left">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#3d7118] to-[#3d7118] rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#3d7118] to-[#3d7118] rounded-3xl opacity-0 transition-opacity duration-500 blur-2xl"></div>
                             <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100 hover-lift">
                                 <div className="w-16 h-16 bg-gradient-to-br from-[#3d7118] to-[#3d7118] rounded-2xl flex items-center justify-center mb-6">
                                     <Target className="h-8 w-8 text-white" />
@@ -119,7 +119,7 @@ const AboutPage = () => {
 
                         {/* Vision */}
                         <div className="relative group animate-slide-in-right">
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#e1ac00] to-[#e1ac00] rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl"></div>
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#e1ac00] to-[#e1ac00] rounded-3xl opacity-0 transition-opacity duration-500 blur-2xl"></div>
                             <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100 hover-lift">
                                 <div className="w-16 h-16 bg-gradient-to-br from-[#e1ac00] to-[#e1ac00] rounded-2xl flex items-center justify-center mb-6">
                                     <Eye className="h-8 w-8 text-white" />

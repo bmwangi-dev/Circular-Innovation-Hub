@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import {
   ArrowRight,
+  ChevronDown,
   Menu,
   X,
   Briefcase,
@@ -19,6 +20,10 @@ import { OptimizedImage } from "../lib/cloudinary";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openMobileGroups, setOpenMobileGroups] = useState<Record<string, boolean>>({
+    Services: false,
+    Entrepreneurs: false,
+  });
   const location = useLocation();
 
   // Services dropdown items
@@ -79,11 +84,25 @@ const Navbar = () => {
     { type: "link", name: "Projects", path: "/projects" },
     { type: "dropdown", name: "Entrepreneurs" },
     { type: "link", name: "Academy", path: "/academy" },
-    { type: "link", name: "Contact Us", path: "/contact" },
+    { type: "link", name: "Contact Us", path: "/contactUs" },
   ];
 
-  // Mobile links only
-  const navLinks = navItems.filter((item) => item.type === "link");
+  const toggleMobileGroup = (group: string) => {
+    setOpenMobileGroups((current) => ({ ...current, [group]: !current[group] }));
+  };
+
+  const closeMobileMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const getDropdownItems = (name: string) => {
+    if (name === "Services") return servicesItems;
+    if (name === "Entrepreneurs") return entrepreneurItems;
+    return [];
+  };
+
+  const isDropdownActive = (name: string) =>
+    getDropdownItems(name).some((item) => item.path === location.pathname);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#3d7118] shadow-lg border-b border-green-800/30">
@@ -177,7 +196,7 @@ const Navbar = () => {
       <div
         className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-all duration-300 lg:hidden ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={closeMobileMenu}
       />
 
       {/* Mobile Drawer */}
@@ -201,7 +220,7 @@ const Navbar = () => {
             />
 
             <button
-              onClick={() => setIsMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="text-green-100 p-2 hover:bg-green-800/50 rounded-lg transition-colors"
             >
               <X className="w-5 h-5" />
@@ -210,58 +229,80 @@ const Navbar = () => {
 
           {/* Drawer Links */}
           <div className="py-3 px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
-            {navLinks.map((item) => (
-              <NavLink
-                key={item.name}
-                to={item.path || "#"}
-                className={({ isActive }) =>
-                  `block px-4 py-3 text-base font-medium rounded-xl transition-all ${isActive
-                    ? "text-white bg-green-800/60"
-                    : "text-green-100 hover:text-white hover:bg-green-800/30"
-                  }`
-                }
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </NavLink>
-            ))}
+            {navItems.map((item) => {
+              if (item.type === "link") {
+                return (
+                  <NavLink
+                    key={item.name}
+                    to={item.path || "#"}
+                    className={({ isActive }) =>
+                      `block px-4 py-3 text-base font-medium rounded-xl transition-all ${isActive
+                        ? "text-white bg-green-800/60"
+                        : "text-green-100 hover:text-white hover:bg-green-800/30"
+                      }`
+                    }
+                    onClick={closeMobileMenu}
+                  >
+                    {item.name}
+                  </NavLink>
+                );
+              }
 
-            {/* Services Section */}
-            <div className="mt-2 pt-2">
-              <div className="px-4 py-2 text-xs font-semibold text-[#e1ac00] uppercase tracking-wider">
-                Our Services
-              </div>
+              const dropdownItems = getDropdownItems(item.name);
+              const isOpen = openMobileGroups[item.name];
+              const active = isDropdownActive(item.name);
 
-              {servicesItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 text-base font-medium rounded-xl transition-all ${isActive
+              return (
+                <div key={item.name} className="pt-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleMobileGroup(item.name)}
+                    aria-expanded={isOpen}
+                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${active
                       ? "text-white bg-green-800/60"
                       : "text-green-100 hover:text-white hover:bg-green-800/30"
-                    }`
-                  }
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${location.pathname === item.path
-                      ? "bg-[#e1ac00] text-[#3d7118]"
-                      : "bg-green-800/30 text-[#e1ac00]"
                       }`}
                   >
-                    <item.icon className="h-4 w-4" />
-                  </div>
+                    <span>{item.name}</span>
+                    <ChevronDown className={`h-4 w-4 text-[#e1ac00] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
 
-                  <div className="flex-1">
-                    <div className="font-medium">{item.name}</div>
-                    <div className="text-xs text-green-200/60">
-                      {item.description}
+                  {isOpen && (
+                    <div className="mt-2 space-y-1 rounded-xl bg-green-950/15 p-2">
+                      {dropdownItems.map((dropdownItem) => (
+                        <NavLink
+                          key={dropdownItem.name}
+                          to={dropdownItem.path}
+                          className={({ isActive }) =>
+                            `flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition-all ${isActive
+                              ? "text-white bg-green-800/70"
+                              : "text-green-100 hover:text-white hover:bg-green-800/30"
+                            }`
+                          }
+                          onClick={closeMobileMenu}
+                        >
+                          <div
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center ${location.pathname === dropdownItem.path
+                              ? "bg-[#e1ac00] text-[#3d7118]"
+                              : "bg-green-800/30 text-[#e1ac00]"
+                              }`}
+                          >
+                            <dropdownItem.icon className="h-4 w-4" />
+                          </div>
+
+                          <div className="flex-1">
+                            <div className="font-medium">{dropdownItem.name}</div>
+                            <div className="text-xs leading-snug text-green-200/60">
+                              {dropdownItem.description}
+                            </div>
+                          </div>
+                        </NavLink>
+                      ))}
                     </div>
-                  </div>
-                </NavLink>
-              ))}
-            </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Drawer Footer */}
