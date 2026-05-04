@@ -201,12 +201,12 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed top-20 right-4 w-[300px] bg-[#3d7118] z-[70] shadow-2xl transition-all duration-300 ease-in-out transform lg:hidden rounded-2xl border border-green-700/50 overflow-hidden ${isMenuOpen
+        className={`fixed top-4 right-4 max-h-[calc(100dvh-2rem)] w-[300px] bg-[#3d7118] z-[70] shadow-2xl transition-all duration-300 ease-in-out transform lg:hidden rounded-2xl border border-green-700/50 overflow-hidden ${isMenuOpen
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
       >
-        <div className="flex flex-col">
+        <div className="flex max-h-[calc(100dvh-2rem)] flex-col">
           {/* Drawer Header */}
           <div className="flex justify-between items-center p-4 border-b border-green-700/50 bg-[#3d7118]/50">
             <OptimizedImage
@@ -228,7 +228,7 @@ const Navbar = () => {
           </div>
 
           {/* Drawer Links */}
-          <div className="py-3 px-3 space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
+          <div className="hide-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 space-y-1 [-webkit-overflow-scrolling:touch]">
             {navItems.map((item) => {
               if (item.type === "link") {
                 return (

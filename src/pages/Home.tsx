@@ -216,7 +216,7 @@ const HomePage = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
                         <div className="text-center group">
                             <div className="w-24 h-24 mx-auto bg-white/10 rounded-3xl flex items-center justify-center mb-5 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                                 <Target className="h-10 w-10 text-[#e1ac00]" />
