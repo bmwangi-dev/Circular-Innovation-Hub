@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowRight,
   Leaf,
@@ -86,6 +86,10 @@ const HomePage = () => {
                 src={img}
                 alt={`Background slide ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_65%] scale-105 animate-slow-zoom"
+                loading={idx === 0 ? "eager" : "lazy"}
+                fetchPriority={idx === 0 ? "high" : "low"}
+                width={1920}
+                height={1080}
               />
               {/* Multi-layered Overlay for Maximum Readability */}
               <div className="absolute inset-0 bg-black/40"></div>

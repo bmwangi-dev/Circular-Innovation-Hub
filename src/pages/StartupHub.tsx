@@ -2,7 +2,6 @@ import {
   Users,
   Briefcase,
   Rocket,
-  CheckCircle,
   Calendar,
   Network,
   Cpu,
@@ -17,42 +16,6 @@ import {
 const StartupHubPage = () => {
   const startupImpactVideoUrl =
     "https://www.youtube.com/embed/T2C1Axws2OY?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1";
-
-  // Success Stories Data
-  const successStories = [
-    {
-      name: "EcoPlastics Ltd",
-      founder: "Grace Makena",
-      impact: "Diverted 500+ tons of plastic waste",
-      raised: "$250K",
-      image: "♻️",
-      color: "from-[#3d7118] to-[#3d7118]",
-    },
-    {
-      name: "SolarReach",
-      founder: "James Otieno",
-      impact: "Provided clean energy to 10K+ households",
-      raised: "$500K",
-      image: "☀️",
-      color: "from-[#e1ac00] to-[#e1ac00]",
-    },
-    {
-      name: "AgriCycle",
-      founder: "Dr. Fatima Diop",
-      impact: "Converted 1K+ tons of agricultural waste",
-      raised: "$350K",
-      image: "🌾",
-      color: "from-[#3d7118] to-[#3d7118]",
-    },
-    {
-      name: "WaterWise",
-      founder: "Michael Njoroge",
-      impact: "Saved 2M+ liters of water annually",
-      raised: "$180K",
-      image: "💧",
-      color: "from-[#3d7118] to-[#e1ac00]",
-    },
-  ];
 
   // Available Resources
   const resources = [
@@ -278,7 +241,7 @@ const StartupHubPage = () => {
                       className="h-full w-full"
                       src={startupImpactVideoUrl}
                       title="Startups reshaping the impact landscape"
-                      loading="eager"
+                      loading="lazy"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       referrerPolicy="strict-origin-when-cross-origin"
                       allowFullScreen

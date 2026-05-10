@@ -71,13 +71,13 @@ const impactStats = [
     icon: Award,
   },
   {
-    number: "200+",
+    number: "600+",
     label: "Participants Trained",
     description: "Across all programs",
     icon: Users,
   },
   {
-    number: "15+",
+    number: "50+",
     label: "Partner Organizations",
     description: "Collaborating with us",
     icon: Handshake,

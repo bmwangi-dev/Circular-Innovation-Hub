@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -8,7 +8,6 @@ import {
   Printer,
   Car,
   Sun,
-  TreePine,
   Utensils,
   ParkingCircle,
   CalendarDays,
@@ -181,7 +180,11 @@ const CoWorkingPage = () => {
               <img
                 src={img}
                 alt={`Background ${idx + 1}`}
-                className="w-full h-full object-cover object-[60%_75%] scale-105 animate-slow-zoom"
+                className="w-full h-full object-cover object-[50%_60%] scale-105 animate-slow-zoom"
+                loading={idx === 0 ? "eager" : "lazy"}
+                fetchPriority={idx === 0 ? "high" : "low"}
+                width={1920}
+                height={1080}
               />
               <div className="absolute inset-0 bg-black/50"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>

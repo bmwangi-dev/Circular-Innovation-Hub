@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  Leaf,
   Recycle,
   Users,
   Award,
@@ -24,6 +23,9 @@ const AboutPage = () => {
             src="/training-3.webp"
             alt="About Us"
             className="h-full w-full object-cover object-[50%_55%] scale-105"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
           />
 
           {/* Elegant Overlay */}
