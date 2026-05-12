@@ -37,7 +37,7 @@ const Footer = () => {
                     </div>
 
                     {/* Links & Contact Column */}
-                    <div className="grid sm:grid-cols-2 gap-12">    
+                    <div className="grid sm:grid-cols-2 gap-12">
                         <div>
                             <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-xs">Quick Links</h4>
                             <ul className="space-y-3 text-sm">
@@ -54,15 +54,15 @@ const Footer = () => {
                             <ul className="space-y-4 text-sm">
                                 <li className="flex items-start gap-3">
                                     <MapPin className="h-5 w-5 text-[#e1ac00] shrink-0" />
-                                    <span>Nairobi, Kenya</span>
+                                    <span>233, Owashika Road, Lavington, Nairobi</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <Mail className="h-5 w-5 text-[#e1ac00] shrink-0" />
-                                    <span className="break-all">info@circularhub.africa</span>
+                                    <span className="break-all">info@circularinnovationhub.com</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <Phone className="h-5 w-5 text-[#e1ac00] shrink-0" />
-                                    <span>+254 700 000000</span>
+                                    <span>+254712746922</span>
                                 </li>
                             </ul>
                         </div>
