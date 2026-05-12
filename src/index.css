@@ -135,6 +135,16 @@ body {
   }
 }
 
+@keyframes partner-logo-shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
 /* Animation Classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -170,6 +180,19 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+.partner-logo-skeleton {
+  background: linear-gradient(135deg, #f8faf9 0%, #eef8f0 52%, #fff9e8 100%);
+  overflow: hidden;
+}
+
+.partner-logo-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+  animation: partner-logo-shimmer 1.4s ease-in-out infinite;
 }
 
 .delay-100 {

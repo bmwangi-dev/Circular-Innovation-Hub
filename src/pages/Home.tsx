@@ -21,6 +21,49 @@ import { cloudinaryAssets } from "../lib/cloudinaryAssets";
 import { OptimizedImage } from "../lib/cloudinary";
 import { Link } from "react-router-dom";
 
+type Partner = {
+  name: string;
+  publicId?: string;
+  fallbackSrc: string;
+};
+
+const PartnerLogoCard = ({ partner }: { partner: Partner }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="group rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3d7118] hover:shadow-lg hover:shadow-green-100">
+      <div className="relative aspect-square rounded-xl bg-white p-2 ring-1 ring-gray-100 overflow-hidden flex items-center justify-center">
+        {!isLoaded && (
+          <div
+            className="absolute inset-2 rounded-lg partner-logo-skeleton"
+            aria-hidden="true"
+          >
+            <div className="absolute left-1/2 top-1/2 h-12 w-24 -translate-x-1/2 -translate-y-1/2 rounded-md bg-white/80 ring-1 ring-green-100/80 sm:h-14 sm:w-28" />
+          </div>
+        )}
+        <OptimizedImage
+          publicId={partner.publicId}
+          fallbackSrc={partner.fallbackSrc}
+          alt={`${partner.name} logo`}
+          className={`h-full w-full object-contain transition-all duration-500 group-hover:scale-105 ${
+            isLoaded ? "opacity-100 blur-0" : "opacity-0 blur-sm"
+          }`}
+          loading="lazy"
+          decoding="async"
+          width={280}
+          height={280}
+          resizeMode="contain"
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setIsLoaded(true)}
+        />
+      </div>
+      <p className="mt-3 text-center text-xs sm:text-sm font-semibold text-gray-700 group-hover:text-[#3d7118] transition-colors">
+        {partner.name}
+      </p>
+    </div>
+  );
+};
+
 const HomePage = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const heroImages = [
@@ -193,57 +236,57 @@ const HomePage = () => {
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#3d7118]/20 rounded-full blur-xl"></div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-5 relative z-10">
-                  <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 relative z-10">
+                  <div className="min-w-0 bg-black/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
+                    <div className="flex min-w-0 items-center gap-2 sm:gap-3 mb-3">
+                      <div className="shrink-0 p-2 sm:p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
                         <Recycle className="h-5 w-5 text-[#e1ac00] group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-2xl font-bold text-white">85%</span>
+                      <span className="min-w-0 text-xl sm:text-2xl font-bold text-white">
+                        85%
+                      </span>
                     </div>
-                    <p className="text-gray-200 text-sm leading-relaxed">
+                    <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">
                       Waste diverted from landfills through our programs
                     </p>
                   </div>
 
-                  <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
+                  <div className="min-w-0 bg-black/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
+                    <div className="flex min-w-0 items-center gap-2 sm:gap-3 mb-3">
+                      <div className="shrink-0 p-2 sm:p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
                         <Users className="h-5 w-5 text-[#e1ac00] group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-2xl font-bold text-white">
+                      <span className="min-w-0 text-xl sm:text-2xl font-bold text-white">
                         200+
                       </span>
                     </div>
-                    <p className="text-gray-200 text-sm leading-relaxed">
+                    <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">
                       Entrepreneurs empowered across the continent
                     </p>
                   </div>
 
-                  <div className="bg-black/20 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
+                  <div className="min-w-0 bg-black/20 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/10 hover-lift transition-all cursor-pointer group">
+                    <div className="flex min-w-0 items-center gap-2 sm:gap-3 mb-3">
+                      <div className="shrink-0 p-2 sm:p-2.5 bg-gradient-to-br from-green-500/20 to-yellow-500/20 rounded-xl group-hover:from-[#3d7118] group-hover:to-[#e1ac00] transition-all duration-300">
                         <TrendingUp className="h-5 w-5 text-[#e1ac00] group-hover:text-white transition-colors duration-300" />
                       </div>
-                      <span className="text-2xl font-bold text-white">
+                      <span className="min-w-0 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">
                         $2.5M+
                       </span>
                     </div>
-                    <p className="text-gray-200 text-sm leading-relaxed">
+                    <p className="text-gray-200 text-xs sm:text-sm leading-relaxed">
                       Circular economy investments facilitated
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-[#3d7118] via-[#3d7118] to-[#e1ac00] rounded-2xl p-5 text-white cursor-pointer flex items-center justify-center">
-                    <div className="flex flex-col sm:flex-row gap-5 pt-4 animate-slide-up delay-300">
-                      <Link
-                        to="/contactUs"
-                        className="border-2 border-[#e1ac00] text-white px-10 py-4 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-3"
-                      >
-                        Get in touch
-                        <ChevronRight className="h-6 w-6" />
-                      </Link>
-                    </div>
+                  <div className="min-w-0 bg-gradient-to-br from-[#3d7118] via-[#3d7118] to-[#e1ac00] rounded-2xl p-3 sm:p-5 text-white cursor-pointer flex items-center justify-center">
+                    <Link
+                      to="/contactUs"
+                      className="w-full border-2 border-[#e1ac00] text-white px-3 sm:px-5 py-3 sm:py-4 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base whitespace-nowrap hover:bg-white/10"
+                    >
+                      Get in touch
+                      <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
+                    </Link>
                   </div>
                 </div>
 
@@ -428,26 +471,7 @@ const HomePage = () => {
           <div className="rounded-3xl bg-white/85 border border-green-100 shadow-xl shadow-green-100/50 p-4 sm:p-5 md:p-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
               {partners.map((partner) => (
-                <div
-                  key={partner.name}
-                  className="group rounded-2xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#3d7118] hover:shadow-lg hover:shadow-green-100"
-                >
-                  <div className="aspect-square rounded-xl bg-white p-2 ring-1 ring-gray-100 overflow-hidden flex items-center justify-center">
-                    <OptimizedImage
-                      publicId={partner.publicId}
-                      fallbackSrc={partner.fallbackSrc}
-                      alt={`${partner.name} logo`}
-                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                      width={280}
-                      height={280}
-                      resizeMode="contain"
-                    />
-                  </div>
-                  <p className="mt-3 text-center text-xs sm:text-sm font-semibold text-gray-700 group-hover:text-[#3d7118] transition-colors">
-                    {partner.name}
-                  </p>
-                </div>
+                <PartnerLogoCard key={partner.name} partner={partner} />
               ))}
             </div>
           </div>
