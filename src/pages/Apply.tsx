@@ -6,7 +6,6 @@ import {
     CheckCircle2,
     Code2,
     GraduationCap,
-    Layers3,
     Leaf,
     UserRound,
     type LucideIcon
@@ -36,7 +35,7 @@ const courseOptions: CourseOption[] = [
         subtitle: "Build responsive websites and web apps",
         icon: Code2,
         schedule: "Morning sessions | 9:00 AM - 1:00 PM",
-        duration: "15 days intensive",
+        duration: "4 weeks intensive",
         mode: "Hybrid learning",
         outcome: "Finish with a responsive web project and practical frontend confidence."
     },
@@ -46,19 +45,9 @@ const courseOptions: CourseOption[] = [
         subtitle: "Grow circular ventures with sharper strategy",
         icon: BriefcaseBusiness,
         schedule: "Morning sessions | 9:00 AM - 1:00 PM",
-        duration: "Foundational + advanced",
+            duration: "Foundational + advanced",
         mode: "Hybrid workshops",
         outcome: "Leave with a clearer circular business model, financial plan, and pitch direction."
-    },
-    {
-        id: "combined",
-        title: "Frontend + Business Development",
-        subtitle: "Full-day technical and venture-building track",
-        icon: Layers3,
-        schedule: "Frontend: 9:00 AM - 1:00 PM | Business: 2:00 PM - 6:00 PM",
-        duration: "Full-day pathway",
-        mode: "Hybrid full-day",
-        outcome: "Build digital product skills and business strategy to move a circular venture forward."
     }
 ];
 

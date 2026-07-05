@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
   ArrowRight,
   BarChart3,
@@ -9,7 +8,6 @@ import {
   ChevronDown,
   Clock3,
   Code2,
-  Download,
   GraduationCap,
   Laptop,
   Layers3,
@@ -71,11 +69,11 @@ const courses: Course[] = [
     title: "Frontend Development",
     kicker: "Build responsive websites and web apps",
     icon: Code2,
-    startDate: "May 2026 intake",
-    duration: "10 days intensive",
+    startDate: "July 2026 intake",
+    duration: "4 weeks intensive",
     mode: "Hybrid: in-person and guided online practice",
     schedule: "Morning sessions | 9:00 AM - 1:00 PM",
-    tuition: "Contact admissions",
+    tuition: "KES 20,000",
     summary:
       "A practical frontend course for beginners, secondary school graduates, founders, and early-career builders who want to create polished web experiences using modern tools.",
     outcomes: [
@@ -84,7 +82,7 @@ const courses: Course[] = [
       "Create a portfolio-ready capstone project",
       "Understand how frontend skills support green and circular ventures",
     ],
-    brochureUrl: "/ECE-COHORT01-BROCHURE.pdf",
+    brochureUrl: "https://drive.google.com/file/d/1dKgo_f-LBXlmGAhjKukuYjGSFMrfuzql/view?usp=sharing",
     modules: [
       {
         title: "Module 1: Web Foundations",
@@ -137,11 +135,11 @@ const courses: Course[] = [
     title: "Business Development",
     kicker: "Grow circular ventures with sharper strategy",
     icon: BriefcaseBusiness,
-    startDate: "May 2026 intake",
+    startDate: "July 2026 intake",
     duration: "Foundational and advanced track",
     mode: "Hybrid: workshops, coaching, and applied venture work",
     schedule: "Morning sessions | 9:00 AM - 1:00 PM",
-    tuition: "Contact admissions",
+    tuition: "KES 60,000",
     summary:
       "A focused circular business development course for early-stage entrepreneurs, secondary school graduates, and professionals building sustainable products, services, and ventures.",
     outcomes: [
@@ -150,7 +148,7 @@ const courses: Course[] = [
       "Design value propositions, circular business models, and revenue streams",
       "Prepare financial forecasts, impact metrics, and investor-ready pitches",
     ],
-    brochureUrl: "/ECE-COHORT01-BROCHURE.pdf",
+    brochureUrl: "https://drive.google.com/file/d/1gCyfeqSTB19E0dwhHPGuguY8NC36YryF/view?usp=sharing",
     modules: [
       {
         title: "Module 1: Circular Journey Mapping",
@@ -271,20 +269,6 @@ const applicationOptions: ApplicationOption[] = [
     summary: courses[1].summary,
     brochureUrl: courses[1].brochureUrl,
   },
-  {
-    id: "combined",
-    title: "Frontend + Business Development",
-    kicker: "Full-day technical and venture-building track",
-    icon: Layers3,
-    startDate: "May 2026 intake",
-    duration: "Combined full-day track",
-    mode: "Hybrid: frontend development, business workshops, and applied venture work",
-    schedule: "Frontend: 9:00 AM - 1:00 PM | Business: 2:00 PM - 6:00 PM",
-    tuition: "Contact admissions",
-    summary:
-      "A combined pathway for learners who want to build digital products in the morning and sharpen the business model, financials, and circular venture strategy in the afternoon.",
-    brochureUrl: "/ECE-COHORT01-BROCHURE.pdf",
-  },
 ];
 
 const highlights = [
@@ -346,19 +330,21 @@ const CourseCard = ({
       </div>
 
       <div className="mt-6 flex flex-col sm:flex-row gap-3">
-        <Link
-          to={`/apply?course=${course.id}`}
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeUeZdizKkMMhsVpyBlfAddy4n_Z07oJ-rQdIUhKycNOZ8iTQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-[#3d7118] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#315d13]"
         >
           Apply Now
           <ArrowRight className="h-4 w-4" />
-        </Link>
+        </a>
         <a
           href={course.brochureUrl}
-          download="ECE-COHORT01-BROCHURE.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-[#e1ac00] px-5 py-3 text-sm font-semibold text-[#3d7118] transition hover:bg-yellow-50"
         >
-          <Download className="h-4 w-4" />
           Brochure
         </a>
       </div>
@@ -395,9 +381,8 @@ const AcademyPage = () => {
           {heroImages.map((img, idx) => (
             <div
               key={idx}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === currentImage ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImage ? "opacity-100" : "opacity-0"
+                }`}
             >
               <img
                 src={img}
@@ -436,18 +421,20 @@ const AcademyPage = () => {
             <span className="text-white font-semibold">
               CFSK Institute of ICT
             </span>{" "}
-            — choose Frontend Development, Business Development, or both.
+            — choose Frontend Development or Business Development.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link
-              to="/apply"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeUeZdizKkMMhsVpyBlfAddy4n_Z07oJ-rQdIUhKycNOZ8iTQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative overflow-hidden bg-gradient-to-r from-[#3d7118] to-[#e1ac00] text-white px-9 py-4 rounded-full font-bold shadow-2xl shadow-green-900/40 transition-all duration-300 hover:scale-[1.05] flex items-center gap-3 btn-shine"
             >
               <span className="relative z-10">Apply for Intake</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
             <a
               href="#courses"
               className="border border-white/30 text-white backdrop-blur-md px-8 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-white/60 transition-all duration-300 flex items-center gap-2"
@@ -498,23 +485,15 @@ const AcademyPage = () => {
               <span className="gradient-text">Courses</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Apply for Frontend Development, Business Development, or the
-              combined full-day track. Independent courses run in the morning;
-              the combined option adds Business Development in the afternoon.
+              Apply for Frontend Development or Business Development.
+              Courses run in the morning with practical, hands-on sessions.
             </p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2">
-            {applicationOptions.slice(0, 2).map((course) => (
+            {applicationOptions.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
-          </div>
-
-          <div className="mt-6">
-            <CourseCard
-              course={applicationOptions[2]}
-              className="lg:max-w-4xl lg:mx-auto"
-            />
           </div>
         </div>
       </section>
@@ -588,7 +567,7 @@ const AcademyPage = () => {
                     <span className="font-semibold text-gray-950">
                       Course pairing:
                     </span>{" "}
-                    Take Frontend Development, Business Development, or both.
+                    Take Frontend Development or Business Development.
                   </div>
                 </div>
               </div>
@@ -687,13 +666,15 @@ const AcademyPage = () => {
                 Tell us which course you want, your current experience level,
                 and whether you are applying as an individual, founder, or team.
               </p>
-              <Link
-                to="/apply"
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeUeZdizKkMMhsVpyBlfAddy4n_Z07oJ-rQdIUhKycNOZ8iTQ/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 font-bold text-[#3d7118] shadow-xl transition hover:-translate-y-1"
               >
                 Start your application
                 <ArrowRight className="h-5 w-5" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
