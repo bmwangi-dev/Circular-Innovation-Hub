@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
   ArrowRight,
   Recycle,
@@ -108,7 +110,18 @@ const CorporatesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Corporates"
+        description="Partner with Circular Innovation Hub for corporate sustainability transformation. Circular economy consulting, ESG strategy, and sustainable business solutions for corporates."
+        path="/corporates"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Corporates", url: "/corporates" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Corporates - Circular Innovation Hub", "Corporate sustainability consulting and circular economy solutions for businesses.", "/corporates"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - Corporates */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-20 lg:pt-30">
         {/* Background Carousel */}
@@ -122,7 +135,7 @@ const CorporatesPage = () => {
             >
               <img
                 src={img}
-                alt={`Background ${idx + 1}`}
+                alt={`Corporate training and sustainability workshop at CIH ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_60%] scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -419,6 +432,7 @@ const CorporatesPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

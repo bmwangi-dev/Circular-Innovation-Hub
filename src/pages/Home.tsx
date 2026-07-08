@@ -20,6 +20,8 @@ import {
 import { cloudinaryAssets } from "../lib/cloudinaryAssets";
 import { OptimizedImage } from "../lib/cloudinary";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, websiteSchema, webPageSchema } from "../lib/schema";
 
 type Partner = {
   name: string;
@@ -113,7 +115,22 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Home"
+        description="Circular Innovation Hub drives Africa's circular economy transition through advisory, co-working, BPO, startup hub, mentorship, and academy programs. Based in Nairobi with global reach."
+        path="/"
+        jsonLd={[
+          organizationSchema(),
+          websiteSchema(),
+          webPageSchema(
+            "Circular Innovation Hub - Circular Economy Excellence in Africa",
+            "Circular Innovation Hub drives Africa's circular economy transition through advisory, co-working, BPO, startup hub, mentorship, and academy programs.",
+            "/"
+          ),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION */}
       <section className="relative min-h-screen overflow-hidden pt-20">
         {/* Background Carousel */}
@@ -127,7 +144,7 @@ const HomePage = () => {
             >
               <img
                 src={img}
-                alt={`Background slide ${idx + 1}`}
+                alt={`Circular Innovation Hub training and community session ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_65%] scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -507,6 +524,7 @@ const HomePage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema, localBusinessSchema } from "../lib/schema";
 import {
     ArrowRight,
     Mail,
@@ -66,6 +68,18 @@ const ContactPage = () => {
     };
 
     return (
+        <>
+        <SEO
+            title="Contact Us"
+            description="Get in touch with Circular Innovation Hub. Located in Nairobi, Kenya and Wilmington, Delaware, USA. Call +254712746922 or email info@circularinnovationhub.com."
+            path="/contactUs"
+            breadcrumbs={[{ name: "Home", url: "/" }, { name: "Contact Us", url: "/contactUs" }]}
+            jsonLd={[
+                organizationSchema(),
+                localBusinessSchema(),
+                webPageSchema("Contact Us - Circular Innovation Hub", "Get in touch with CIH.", "/contactUs"),
+            ]}
+        />
         <div className="min-h-screen bg-white overflow-x-hidden">
             {/* HERO */}
             <section className="relative bg-gradient-to-br from-white via-green-50/30 to-yellow-50/20 pt-28 pb-16 lg:pt-32">
@@ -346,6 +360,7 @@ const ContactPage = () => {
                 </div>
             </section>
         </div>
+        </>
     );
 };
 

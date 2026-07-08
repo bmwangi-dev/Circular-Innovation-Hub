@@ -1,3 +1,5 @@
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
     Award,
     CheckCircle,
@@ -52,6 +54,17 @@ const MentorshipPage = () => {
     ];
 
     return (
+        <>
+        <SEO
+            title="Mentorship"
+            description="Get expert mentorship for your venture at Circular Innovation Hub. Guidance on business operations, HR, investor readiness, product development, and compliance."
+            path="/mentorship"
+            breadcrumbs={[{ name: "Home", url: "/" }, { name: "Mentorship", url: "/mentorship" }]}
+            jsonLd={[
+                organizationSchema(),
+                webPageSchema("Mentorship - Circular Innovation Hub", "Expert mentorship for sustainable ventures.", "/mentorship"),
+            ]}
+        />
         <div className="min-h-screen bg-white overflow-x-hidden">
             {/* HERO SECTION - Mentorship */}
             <section className="relative min-h-[70vh] bg-gradient-to-br from-white via-green-50/30 to-yellow-50/30 overflow-hidden pt-28 lg:pt-32">
@@ -160,6 +173,7 @@ const MentorshipPage = () => {
                 </div>
             </section>
         </div>
+        </>
     );
 };
 

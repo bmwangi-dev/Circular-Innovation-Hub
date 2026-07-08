@@ -13,7 +13,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 
-import logoImg from "../assets/images/CIH_logo.png";
+import logoImg from "../assets/images/CIH_logo_nav.png";
 import NavbarDropdown from "../components/Ui/NavbarDropdown";
 import { cloudinaryAssets } from "../lib/cloudinaryAssets";
 import { OptimizedImage } from "../lib/cloudinary";
@@ -117,7 +117,7 @@ const Navbar = () => {
               publicId={cloudinaryAssets.logo}
               fallbackSrc={logoImg}
               alt="CIH Logo"
-              className="h-32 w-32 object-contain"
+              className="h-40 w-40 object-contain"
               width={256}
               height={256}
               resizeMode="contain"
@@ -213,7 +213,7 @@ const Navbar = () => {
               publicId={cloudinaryAssets.logo}
               fallbackSrc={logoImg}
               alt="CIH Logo"
-              className="h-28 w-28 object-contain"
+              className="h-36 w-36 object-contain"
               width={224}
               height={224}
               resizeMode="contain"

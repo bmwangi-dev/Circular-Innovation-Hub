@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
   ArrowRight,
   Users,
@@ -128,8 +130,19 @@ const AdvisoryPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* HERO SECTION - Advisory */}
+    <>
+      <SEO
+        title="Advisory"
+        description="Expert circular economy advisory services from Circular Innovation Hub. Strategic guidance on sustainability, ESG, circular business models, and green transformation."
+        path="/advisory"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Advisory", url: "/advisory" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Advisory - Circular Innovation Hub", "Expert circular economy advisory services.", "/advisory"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
+        {/* HERO SECTION - Advisory */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-28 lg:pt-32">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0">
@@ -142,7 +155,7 @@ const AdvisoryPage = () => {
             >
               <img
                 src={img}
-                alt={`Background ${idx + 1}`}
+                alt={`CIH advisory services workshop and consultation ${idx + 1}`}
                 className="w-full h-full object-cover object-center scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -468,6 +481,7 @@ const AdvisoryPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

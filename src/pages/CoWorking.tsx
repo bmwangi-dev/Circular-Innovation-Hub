@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
   ArrowRight,
   Users,
@@ -165,7 +167,18 @@ const CoWorkingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Co-working Space"
+        description="Premium co-working space in Nairobi by Circular Innovation Hub. Hot desks, dedicated desks, boardrooms, and meeting facilities in a collaborative environment."
+        path="/co-working"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Co-working", url: "/co-working" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Co-working Space - Circular Innovation Hub", "Premium co-working space in Nairobi.", "/co-working"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - Co-working Space */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-20 lg:pt-14">
         {/* Background Carousel */}
@@ -179,7 +192,7 @@ const CoWorkingPage = () => {
             >
               <img
                 src={img}
-                alt={`Background ${idx + 1}`}
+                alt={`CIH co-working space in Nairobi ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_60%] scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -502,6 +515,7 @@ const CoWorkingPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

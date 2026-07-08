@@ -1,3 +1,5 @@
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
   Users,
   Briefcase,
@@ -73,7 +75,18 @@ const StartupHubPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Startup Hub"
+        description="Launch and scale your startup with Circular Innovation Hub's Startup Hub. Access mentorship, funding opportunities, co-working space, and a vibrant entrepreneurial community in Nairobi."
+        path="/startup-hub"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Startup Hub", url: "/startup-hub" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Startup Hub - Circular Innovation Hub", "Launch and scale your startup with CIH's Startup Hub.", "/startup-hub"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - Startup Hub */}
       <section className="relative min-h-[70vh] bg-gradient-to-br from-white via-green-50/30 to-yellow-50/30 overflow-hidden pt-28 lg:pt-32">
         <div className="absolute inset-0 overflow-hidden">
@@ -355,6 +368,7 @@ const StartupHubPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ import {
     Mail,
     Phone,
 } from 'lucide-react';
-import logoImg from '../assets/images/CIH_logo.png';
+import logoImg from '../assets/images/CIH_logo_nav.png';
 import { cloudinaryAssets } from '../lib/cloudinaryAssets';
 import { OptimizedImage } from '../lib/cloudinary';
 
@@ -60,7 +60,7 @@ const Footer = () => {
                                 publicId={cloudinaryAssets.logo}
                                 fallbackSrc={logoImg}
                                 alt="CIH Logo"
-                                className="h-20 w-20 object-contain sm:h-28 sm:w-28 lg:h-32 lg:w-32"
+                                className="h-24 w-24 object-contain sm:h-32 sm:w-32 lg:h-40 lg:w-40"
                                 width={256}
                                 height={256}
                                 resizeMode="contain"
@@ -76,7 +76,7 @@ const Footer = () => {
                         <h4 className="text-white font-semibold mb-5 uppercase tracking-wider text-xs">Quick Links</h4>
                         <ul className="space-y-3 text-xs sm:text-sm">
                             <li><Link to="/about" className="hover:text-[#e1ac00] transition-colors">About Us</Link></li>
-                            <li><Link to="/entrepreneurs" className="hover:text-[#e1ac00] transition-colors">Entrepreneurs</Link></li>
+                            <li><Link to="/startup-hub" className="hover:text-[#e1ac00] transition-colors">Entrepreneurs</Link></li>
                             <li><Link to="/corporates" className="hover:text-[#e1ac00] transition-colors">Corporates</Link></li>
                             <li><Link to="/advisory" className="hover:text-[#e1ac00] transition-colors">Advisory Services</Link></li>
                             <li><Link to="/co-working" className="hover:text-[#e1ac00] transition-colors">Co-working</Link></li>

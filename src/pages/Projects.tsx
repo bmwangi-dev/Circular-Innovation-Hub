@@ -13,6 +13,8 @@ import {
   Search,
 } from "lucide-react";
 import { OptimizedImage } from "../lib/cloudinary";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 
 // Project data – added a unique slug for each project
 const projectsData = [
@@ -101,7 +103,18 @@ const ProjectsPage = () => {
       : projectsData.filter((project) => project.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Projects"
+        description="Explore Circular Innovation Hub's transformative projects driving circular economy innovation, sustainability, and community impact across Africa."
+        path="/projects"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Projects", url: "/projects" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Projects - Circular Innovation Hub", "Explore CIH's transformative circular economy projects across Africa.", "/projects"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - Projects */}
       <section className="relative min-h-[60vh] bg-gradient-to-br from-white via-green-50/30 to-yellow-50/30 overflow-hidden pt-28 lg:pt-32">
         <div className="absolute inset-0 overflow-hidden">
@@ -274,6 +287,7 @@ const ProjectsPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

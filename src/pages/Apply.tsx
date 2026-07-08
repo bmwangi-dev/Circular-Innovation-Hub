@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
     ArrowRight,
     BriefcaseBusiness,
@@ -91,6 +93,18 @@ export default function ApplyPage() {
     };
 
     return (
+        <>
+        <SEO
+            title="Apply to CIH Academy"
+            description="Apply to the Circular Innovation Hub Academy. Choose between Frontend Development and Business Development courses. Start your journey in circular economy entrepreneurship."
+            path="/apply"
+            noIndex
+            breadcrumbs={[{ name: "Home", url: "/" }, { name: "Academy", url: "/academy" }, { name: "Apply", url: "/apply" }]}
+            jsonLd={[
+                organizationSchema(),
+                webPageSchema("Apply - Circular Innovation Hub Academy", "Apply to CIH Academy programs.", "/apply"),
+            ]}
+        />
         <div className="min-h-screen bg-white">
             <section className="relative overflow-hidden bg-gradient-to-br from-white via-green-50/30 to-yellow-50/20 pt-16 pb-16 lg:pt-24 lg:pb-20">
                 {/* Subtle background accents */}
@@ -198,11 +212,11 @@ export default function ApplyPage() {
                                 {/* Section header */}
                                 <div className="mb-5">
                                     {/* Top standalone intake title */}
-                                    <h1 className="text-center md:text-left text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-[3.25rem]">
+                                    <h2 className="text-center md:text-left text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-[3.25rem]">
                                         <span className="bg-gradient-to-r from-[#3d7118] to-[#5a9e2a] bg-clip-text text-transparent">
                                             ECE-CIH01 2026
                                         </span>
-                                    </h1>
+                                    </h2>
 
                                     {/* Path header */}
                                     <div className="mt-4 flex flex-col items-center gap-3 md:flex-row md:justify-between">
@@ -584,5 +598,6 @@ export default function ApplyPage() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

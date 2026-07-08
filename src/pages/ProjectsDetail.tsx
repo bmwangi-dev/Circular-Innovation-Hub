@@ -12,6 +12,8 @@ import {
   Users,
 } from "lucide-react";
 import { OptimizedImage } from "../lib/cloudinary";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 
 interface ProjectDetail {
   id: string;
@@ -173,29 +175,48 @@ const ProjectDetailPage = () => {
   // Show 404 if project not found
   if (!project) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center max-w-md px-4">
-          <h1 className="text-6xl font-bold text-[#3d7118] mb-4">404</h1>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
-            Project Not Found
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Sorry, we couldn't find the project you're looking for.
-          </p>
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 bg-[#3d7118] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2a4f0f] transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Projects
-          </Link>
+      <>
+        <SEO title="Project Not Found" description="The requested project could not be found." path="/projects/404" noIndex />
+        <div className="min-h-screen bg-white flex items-center justify-center">
+          <div className="text-center max-w-md px-4">
+            <h1 className="text-6xl font-bold text-[#3d7118] mb-4">404</h1>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+              Project Not Found
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Sorry, we couldn't find the project you're looking for.
+            </p>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 bg-[#3d7118] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2a4f0f] transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Projects
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title={project.name}
+        description={project.summary}
+        path={`/projects/${project.slug}`}
+        ogImage={project.heroImage}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Projects", url: "/projects" },
+          { name: project.name, url: `/projects/${project.slug}` },
+        ]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema(project.name, project.summary, `/projects/${project.slug}`),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* ── BREADCRUMB NAV ── */}
       <div className="pt-28 lg:pt-32 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-sm text-gray-400">
@@ -428,6 +449,7 @@ const ProjectDetailPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

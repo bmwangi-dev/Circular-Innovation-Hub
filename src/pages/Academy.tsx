@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema, courseSchema } from "../lib/schema";
 import {
   ArrowRight,
   BarChart3,
@@ -373,7 +375,28 @@ const AcademyPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="Academy"
+        description="Join Circular Innovation Hub Academy. Frontend Development and Business Development courses with a circular economy lens. Practical, mentor-led programs in Nairobi."
+        path="/academy"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Academy", url: "/academy" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("Academy - Circular Innovation Hub", "CIH Academy offers practical courses in Frontend Development and Business Development.", "/academy"),
+          courseSchema(
+            "Frontend Development",
+            "Learn modern frontend development with HTML, CSS, JavaScript, React, and responsive design principles.",
+            "/academy"
+          ),
+          courseSchema(
+            "Business Development",
+            "Master business development skills including market research, sales strategy, partnership building, and growth planning.",
+            "/academy"
+          ),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - Academy */}
       <section className="relative min-h-[108vh] flex items-center overflow-hidden pt-28 lg:pt-14">
         {/* Background Carousel */}
@@ -386,7 +409,7 @@ const AcademyPage = () => {
             >
               <img
                 src={img}
-                alt={`Background ${idx + 1}`}
+                alt={`CIH Academy learning environment and workshop ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_70%] scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -481,7 +504,7 @@ const AcademyPage = () => {
       <section id="courses" className="py-16 md:py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-250">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
               <span className="gradient-text">Courses</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-gray-600">
@@ -680,6 +703,7 @@ const AcademyPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

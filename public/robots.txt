@@ -1,0 +1,15 @@
+# robots.txt for Circular Innovation Hub
+# https://www.circularinnovationhub.com
+
+User-agent: *
+Allow: /
+Disallow: /apply
+Disallow: /api/
+
+# Allow crawlers to access CSS and JS
+Allow: /assets/
+
+# Sitemap
+Sitemap: https://www.circularinnovationhub.com/sitemap.xml
+
+# Crawl-delay: 10

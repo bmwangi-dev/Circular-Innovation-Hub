@@ -11,10 +11,23 @@ import {
 } from "lucide-react";
 import { cloudinaryAssets } from "../lib/cloudinaryAssets";
 import { OptimizedImage } from "../lib/cloudinary";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="About Us"
+        description="Learn about Circular Innovation Hub — our mission to drive Africa's circular economy transition through the three pillars of People, Planet, and Sustainability."
+        path="/about"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("About Circular Innovation Hub", "Learn about Circular Innovation Hub — our mission to drive Africa's circular economy transition.", "/about"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - About Us */}
       <section className="relative h-[85vh] flex items-center overflow-hidden pt-28 lg:pt-14">
         {/* Background */}
@@ -294,6 +307,7 @@ const AboutPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

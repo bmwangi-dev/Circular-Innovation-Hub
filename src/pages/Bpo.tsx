@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
+import { organizationSchema, webPageSchema } from "../lib/schema";
 import {
   ArrowRight,
   Users,
@@ -206,7 +208,18 @@ const BPOPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <>
+      <SEO
+        title="BPO Services"
+        description="Streamline your operations with Circular Innovation Hub's BPO services. Customer support, data entry, virtual assistance, and back-office solutions from Nairobi."
+        path="/bpo"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "BPO", url: "/bpo" }]}
+        jsonLd={[
+          organizationSchema(),
+          webPageSchema("BPO Services - Circular Innovation Hub", "Streamline operations with CIH BPO services.", "/bpo"),
+        ]}
+      />
+      <div className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION - BPO */}
       <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-28 lg:pt-32">
         {/* Background Carousel */}
@@ -220,7 +233,7 @@ const BPOPage = () => {
             >
               <img
                 src={img}
-                alt={`Background ${idx + 1}`}
+                alt={`CIH BPO services and operations team ${idx + 1}`}
                 className="w-full h-full object-cover object-[50%_60%] scale-105 animate-slow-zoom"
                 loading={idx === 0 ? "eager" : "lazy"}
                 fetchPriority={idx === 0 ? "high" : "low"}
@@ -530,6 +543,7 @@ const BPOPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
