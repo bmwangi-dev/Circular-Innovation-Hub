@@ -62,12 +62,22 @@ const projectsData = [
     category: "Training",
     date: "2024",
   },
+  {
+    id: "5",
+    slug: "upcycling-textile-waste-entrepreneurship",
+    name: "Upcycling Second-Hand Textile Waste",
+    summary:
+      "A 15-month project training 120 youth and women in textile upcycling, green entrepreneurship, and circular economy business models across three cohorts in Nairobi.",
+    image: "/training-5.webp",
+    category: "Training",
+    date: "2025-2026",
+  },
 ];
 
 // Impact stats
 const impactStats = [
   {
-    number: "4",
+    number: "5",
     label: "Major Projects",
     description: "Successfully delivered",
     icon: Award,

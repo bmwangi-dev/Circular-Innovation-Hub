@@ -135,6 +135,43 @@ Over 40 entrepreneurs from agribusiness, manufacturing, and retail sectors parti
       "Post‑training support hotline",
     ],
   },
+  "upcycling-textile-waste-entrepreneurship": {
+    id: "5",
+    slug: "upcycling-textile-waste-entrepreneurship",
+    name: "Upcycling Second-Hand Textile Waste",
+    category: "Training",
+    date: "2025-2026",
+    location: "Nairobi, Kenya",
+    heroImage: "/training-5.webp",
+    summary:
+      "A 15-month project training 120 youth and women in textile upcycling, green entrepreneurship, and circular economy business models across three cohorts in Nairobi.",
+    fullDescription: `This 15-month project transforms discarded second-hand textiles into economic opportunity by training 120 youth and women across three cohorts and six training groups in textile upcycling and green entrepreneurship. Managed by Susan Magu (PM) and Joan Amondi (PO), the project runs from August 2025 to October 2026 and addresses Kenya's textile waste crisis through a circular economy lens.
+
+The Needs Assessment employed a mixed-methods approach — focus group discussions, key informant interviews, and desk reviews — across five work streams: stakeholder mapping, skills gap assessment, textile waste mapping, market analysis, and policy review. Findings directly shaped the dual-focused curriculum that integrates hands-on technical skills (sewing, redesign, machine operation) with business development support (financial management, circular business planning).
+
+A Digital Repository Platform (DRP) serves as both a learning hub hosting training curricula and video tutorials, and an online marketplace connecting entrepreneurs to local and international buyers. The Training and Incubation Centre in Mihango, Utawala houses specialised machinery — 10 sewing machines, button hole, leather, and overlock machines — and provides a collaborative workspace for all beneficiaries.
+
+Community mobilisers were instrumental in achieving the 60% women participation target, overcoming barriers through hyper-local recruitment. The project also established Kenya's policy context for circular textiles, aligning with the Kenya National Circular Economy Roadmap, the Sustainable Waste Management Act (EPR), and Vision 2030.`,
+    impactStats: [
+      { label: "Participants Trained", value: "120", icon: Users },
+      { label: "Training Groups", value: "6", icon: Target },
+      { label: "Women Target", value: "60%", icon: Users },
+    ],
+    keyHighlights: [
+      "Dual-focused curriculum: technical upcycling skills + business development training",
+      "Digital Repository Platform — learning hub and e-commerce marketplace in one",
+      "Training and Incubation Centre in Mihango with 10 specialised sewing machines",
+      "Community mobiliser network driving 60% women participation across all cohorts",
+      "Aligned with Kenya's National Circular Economy Roadmap and EPR policy framework",
+    ],
+    partners: [
+      { name: "EIF" },
+      { name: "DOT" },
+      { name: "Mastercard Foundation" },
+    ],
+    nextSteps:
+      "Fashion pop-ups and community workshops are ongoing. Contact us to partner on scaling the circular textile model.",
+  },
 };
 
 function getProjectBySlug(slug: string): ProjectDetail | undefined {
