@@ -68,7 +68,7 @@ const projectsData = [
     name: "Upcycling Second-Hand Textile Waste",
     summary:
       "A 15-month project training 120 youth and women in textile upcycling, green entrepreneurship, and circular economy business models across three cohorts in Nairobi.",
-    image: "/training-5.webp",
+    image: "/upcycling.jpg",
     category: "Training",
     date: "2025-2026",
   },

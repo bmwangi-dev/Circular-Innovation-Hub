@@ -142,7 +142,7 @@ Over 40 entrepreneurs from agribusiness, manufacturing, and retail sectors parti
     category: "Training",
     date: "2025-2026",
     location: "Nairobi, Kenya",
-    heroImage: "/training-5.webp",
+    heroImage: "/upcycling.jpg",
     summary:
       "A 15-month project training 120 youth and women in textile upcycling, green entrepreneurship, and circular economy business models across three cohorts in Nairobi.",
     fullDescription: `This 15-month project transforms discarded second-hand textiles into economic opportunity by training 120 youth and women across three cohorts and six training groups in textile upcycling and green entrepreneurship. Managed by Susan Magu (PM) and Joan Amondi (PO), the project runs from August 2025 to October 2026 and addresses Kenya's textile waste crisis through a circular economy lens.

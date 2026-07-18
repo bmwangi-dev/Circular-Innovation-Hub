@@ -80,7 +80,7 @@ const CoWorkingPage = () => {
   const pricingPlans = [
     {
       name: "Daily Pass",
-      price: "950",
+      price: "2,000",
       period: "/day",
       icon: Sun,
       features: [
@@ -97,7 +97,7 @@ const CoWorkingPage = () => {
     },
     {
       name: "Weekly Pass",
-      price: "4,500",
+      price: "5,000",
       period: "/week",
       icon: CalendarDays,
       features: [
@@ -114,7 +114,7 @@ const CoWorkingPage = () => {
     },
     {
       name: "Monthly Pass",
-      price: "17,000",
+      price: "20,000",
       period: "/month",
       icon: Calendar,
       features: [
@@ -134,7 +134,7 @@ const CoWorkingPage = () => {
 
   const dedicatedDeskPlan = {
     name: "Dedicated Desk",
-    price: "22,000",
+    price: "21,500",
     period: "/month",
     icon: Laptop,
     features: [
@@ -151,7 +151,7 @@ const CoWorkingPage = () => {
 
   const boardroomPlan = {
     name: "Boardroom",
-    price: "1,500",
+    price: "1,000",
     period: "/hour",
     icon: Presentation,
     features: [
