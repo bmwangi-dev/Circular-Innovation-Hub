@@ -145,13 +145,13 @@ Over 40 entrepreneurs from agribusiness, manufacturing, and retail sectors parti
     heroImage: "/upcycling.jpg",
     summary:
       "A 15-month project training 120 youth and women in textile upcycling, green entrepreneurship, and circular economy business models across three cohorts in Nairobi.",
-    fullDescription: `This 15-month project transforms discarded second-hand textiles into economic opportunity by training 120 youth and women across three cohorts and six training groups in textile upcycling and green entrepreneurship. Managed by Susan Magu (PM) and Joan Amondi (PO), the project runs from August 2025 to October 2026 and addresses Kenya's textile waste crisis through a circular economy lens.
+    fullDescription: `This 15-month project breathes new life into discarded second-hand textiles, training 120 youth and women across three cohorts and six training groups in textile upcycling and green entrepreneurship. Managed by Joan Amondi, it runs from August 2025 to October 2026 and tackles Kenya's textile waste crisis through a circular economy lens.
 
-The Needs Assessment employed a mixed-methods approach — focus group discussions, key informant interviews, and desk reviews — across five work streams: stakeholder mapping, skills gap assessment, textile waste mapping, market analysis, and policy review. Findings directly shaped the dual-focused curriculum that integrates hands-on technical skills (sewing, redesign, machine operation) with business development support (financial management, circular business planning).
+The Needs Assessment used focus group discussions, key informant interviews, and desk reviews across five work streams: stakeholder mapping, skills gap assessment, textile waste mapping, market analysis, and policy review. The findings shaped a dual-focused curriculum that blends hands-on technical skills like sewing, redesign, and machine operation with business development support including financial management and circular business planning.
 
-A Digital Repository Platform (DRP) serves as both a learning hub hosting training curricula and video tutorials, and an online marketplace connecting entrepreneurs to local and international buyers. The Training and Incubation Centre in Mihango, Utawala houses specialised machinery — 10 sewing machines, button hole, leather, and overlock machines — and provides a collaborative workspace for all beneficiaries.
+A Digital Repository Platform (DRP) serves as both a learning hub for training materials and video tutorials, and an online marketplace connecting entrepreneurs to local and international buyers. The Training and Incubation Centre in Mihango, Utawala comes equipped with specialised machinery, 10 sewing machines, button hole, leather, and overlock machines, plus a collaborative workspace for all beneficiaries.
 
-Community mobilisers were instrumental in achieving the 60% women participation target, overcoming barriers through hyper-local recruitment. The project also established Kenya's policy context for circular textiles, aligning with the Kenya National Circular Economy Roadmap, the Sustainable Waste Management Act (EPR), and Vision 2030.`,
+Community mobilisers were key to hitting the 60% women participation target, using hyper-local recruitment to overcome barriers. The project also laid the groundwork for Kenya's circular textiles policy, aligning with the Kenya National Circular Economy Roadmap, the Sustainable Waste Management Act (EPR), and Vision 2030.`,
     impactStats: [
       { label: "Participants Trained", value: "120", icon: Users },
       { label: "Training Groups", value: "6", icon: Target },
@@ -167,7 +167,6 @@ Community mobilisers were instrumental in achieving the 60% women participation 
     partners: [
       { name: "EIF" },
       { name: "DOT" },
-      { name: "Mastercard Foundation" },
     ],
     nextSteps:
       "Fashion pop-ups and community workshops are ongoing. Contact us to partner on scaling the circular textile model.",
